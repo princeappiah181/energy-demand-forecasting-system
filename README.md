@@ -1,184 +1,66 @@
-# Energy Demand Forecasting System
+Energy Demand Forecasting System
 
-An end-to-end energy demand forecasting system built with machine learning, FastAPI, Streamlit, and Docker.
+Live Application
+https://energy-demand-forecasting-systemapp.streamlit.app/
 
-This project predicts electricity demand using engineered time-series features and an XGBoost forecasting model. It includes data preprocessing, model training, API deployment, an interactive dashboard, and containerization for reproducible execution.
+Overview
+This project presents a production-grade, end-to-end energy demand forecasting system designed to simulate real-world deployment scenarios. It integrates data preprocessing, machine learning modeling, API development, and an interactive dashboard into a unified pipeline.
 
-## Project Overview
+The system leverages engineered time-series features and an XGBoost regression model to deliver highly accurate short-term electricity demand predictions.
 
-This system was designed to demonstrate how machine learning can be applied in practice for energy forecasting and operational decision-making.
+Business Problem
+Accurate forecasting of energy demand is essential for modern energy systems. Poor predictions can lead to overproduction, energy waste, increased operational costs, and grid instability.
 
-The application allows users to:
-- evaluate model performance using standard forecasting metrics
-- visualize actual vs predicted energy demand
-- generate future demand forecasts
-- test single-demand scenarios through interactive inputs
-- monitor predictions through logged outputs
+This project addresses these challenges by providing a scalable and deployable forecasting solution.
 
-## Key Features
+Key Features
+- End-to-end machine learning pipeline
+- Advanced time-series feature engineering
+- High-performance XGBoost model
+- FastAPI backend for real-time inference
+- Interactive Streamlit dashboard
+- Multi-step forecasting (24–72 hours)
+- Prediction logging and monitoring
+- Docker containerization for reproducibility
 
-- End-to-end forecasting pipeline
-- Time-series feature engineering with lag and rolling statistics
-- XGBoost regression model for demand prediction
-- FastAPI backend for serving predictions
-- Streamlit dashboard for interactive exploration
-- Dockerized application for portability and deployment
-- Prediction logging for basic monitoring
+Model Performance
+MAE: 310.24
+RMSE: 418.04
+MAPE: 0.99%
 
-## Model Performance
+The model effectively captures short-term fluctuations and weekly seasonality in energy demand.
 
-The baseline XGBoost model achieved strong forecasting performance on the PJM hourly energy dataset:
+System Architecture
+The system consists of the following components:
+- Data Processing Layer: Feature engineering (lag, rolling stats, calendar features)
+- Modeling Layer: XGBoost regression model
+- API Layer: FastAPI for serving predictions
+- UI Layer: Streamlit dashboard
+- Deployment Layer: Docker containerization
 
-- **MAE:** 310.24
-- **RMSE:** 418.04
-- **MAPE:** 0.99%
+Dashboard Modules
+1. Single Forecast: Real-time predictions from user inputs
+2. Model Performance: Metrics and visualization
+3. Future Forecast: Multi-step predictions
+4. Prediction Logs: Monitoring outputs
 
-These results indicate that the model captures short-term and weekly energy demand patterns effectively.
+Tech Stack
+Python, Pandas, NumPy, Scikit-learn, XGBoost, FastAPI, Streamlit, Docker
 
-## Dashboard Sections
+Business Impact
+- Enhances demand forecasting accuracy
+- Improves resource allocation
+- Reduces operational costs
+- Supports real-time decision-making
 
-### 1. Single Forecast
-Users can manually input feature values and receive an estimated energy demand prediction.
+Future Enhancements
+- Cloud deployment (AWS/GCP/Azure)
+- Automated retraining pipeline
+- Data drift detection
+- CI/CD integration
+- Advanced deep learning models
 
-### 2. Saved Model Evaluation
-Displays:
-- MAE
-- RMSE
-- MAPE
-- actual vs predicted energy demand plot
-
-### 3. Future Forecast
-Generates multi-step forecasts for future demand over selectable horizons such as 24, 48, or 72 hours.
-
-### 4. Prediction Logs
-Tracks recent model outputs to simulate real-world monitoring.
-
-## Project Structure
-
-
-energy-demand-forecasting-system/ <br>
-│ <br>
-├── app/ <br>
-│   ├── api.py  <br>
-│   └── dashboard.py <br>
-│ <br>
-├── src/ <br>
-│   ├── data_preprocessing.py <br>
-│   └── train.py <br>
-│ <br>
-├── Dockerfile <br>
-├── requirements.txt <br>
-├── .dockerignore <br>
-├── .gitignore <br>
-└── README.md <br>
-
-
-## Workflow
-
-### 1. Data Preprocessing
-The raw PJM hourly energy data is cleaned, sorted, and transformed into a forecasting-ready dataset with:
-
-- Calendar-based features
-- Lag features
-- Rolling mean and rolling standard deviation features
-
----
-
-### 2. Model Training
-An XGBoost regressor is trained using a time-based train/test split to avoid data leakage.
-
----
-
-### 3. Evaluation
-The trained model is evaluated using:
-
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- Mean Absolute Percentage Error (MAPE)
-
----
-
-### 4. Deployment
-The model is deployed using:
-
-- **FastAPI** for prediction endpoints  
-- **Streamlit** for dashboard interaction  
-- **Docker** for containerized execution  
-
-### Installation
-
-Clone the repository:
-
-git clone https://github.com/princeappiah181/energy-demand-forecasting-system.git
-cd energy-demand-forecasting-system
-
-### Install dependencies:
-
-pip install -r requirements.txt
-
-Run Locally
-
-Train the model
-
-python src/train.py
-
-### Start the API
-
-uvicorn app.api:app --reload
-
-### Start the dashboard
-
-streamlit run app/dashboard.py
-
-### Run with Docker
-
-Build the image:
-
-docker build -t energy-forecast-app .
-
-### Run the container:
-
-docker run -p 8000:8000 -p 8501:8501 energy-forecast-app
-
-Then open:
-
-API docs: http://localhost:8000/docs
-
-Dashboard: http://localhost:8501 (http://localhost:8501/)
-
-### Tech Stack
-
-Python
-Pandas
-NumPy
-Scikit-learn
-XGBoost
-FastAPI
-Streamlit
-Docker
-Matplotlib
-
-### Business Value
-
-Energy demand forecasting supports:
-load planning
-resource allocation
-operational efficiency
-scenario analysis
-
-This project demonstrates the ability to move from raw time-series data to a deployable machine learning application.
-
-### Future Improvements
-
-Potential next steps include:
-cloud deployment
-automated retraining
-drift detection
-model versioning
-CI/CD integration
-richer monitoring dashboards
-
-### Author
-Prince Appiah <br>
+Author
+Prince Appiah
 Ph.D. in Data Science
 

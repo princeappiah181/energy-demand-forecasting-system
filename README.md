@@ -73,35 +73,37 @@ energy-demand-forecasting-system/
 └── README.md
 
 
-### Workflow
+## Workflow
 
 ### 1. Data Preprocessing
-
 The raw PJM hourly energy data is cleaned, sorted, and transformed into a forecasting-ready dataset with:
 
-calendar-based features
-lag features
-rolling mean and rolling standard deviation features
+- Calendar-based features
+- Lag features
+- Rolling mean and rolling standard deviation features
+
+---
 
 ### 2. Model Training
+An XGBoost regressor is trained using a time-based train/test split to avoid data leakage.
 
-An XGBoost regressor is trained using a time-based train/test split to avoid leakage.
+---
 
 ### 3. Evaluation
-
 The trained model is evaluated using:
 
-Mean Absolute Error (MAE)
-Root Mean Squared Error (RMSE)
-Mean Absolute Percentage Error (MAPE)
+- Mean Absolute Error (MAE)
+- Root Mean Squared Error (RMSE)
+- Mean Absolute Percentage Error (MAPE)
+
+---
 
 ### 4. Deployment
+The model is deployed using:
 
-The model is deployed through:
-
-FastAPI for prediction endpoints
-Streamlit for dashboard interaction
-Docker for containerized execution
+- **FastAPI** for prediction endpoints  
+- **Streamlit** for dashboard interaction  
+- **Docker** for containerized execution  
 
 ### Installation
 

@@ -56,21 +56,21 @@ Tracks recent model outputs to simulate real-world monitoring.
 ## Project Structure
 
 
-energy-demand-forecasting-system/
-│
-├── app/
-│   ├── api.py
-│   └── dashboard.py
-│
-├── src/
-│   ├── data_preprocessing.py
-│   └── train.py
-│
-├── Dockerfile
-├── requirements.txt
-├── .dockerignore
-├── .gitignore
-└── README.md
+energy-demand-forecasting-system/ <br>
+│ <br>
+├── app/ <br>
+│   ├── api.py  <br>
+│   └── dashboard.py <br>
+│ <br>
+├── src/ <br>
+│   ├── data_preprocessing.py <br>
+│   └── train.py <br>
+│ <br>
+├── Dockerfile <br>
+├── requirements.txt <br>
+├── .dockerignore <br>
+├── .gitignore <br>
+└── README.md <br>
 
 
 ## Workflow

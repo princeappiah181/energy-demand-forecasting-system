@@ -131,25 +131,25 @@ def compute_residual_std(pred_df: pd.DataFrame | None) -> float:
     return float(residuals.std(ddof=1))
 
 
-def log_prediction(prediction, mode="single", horizon=None):
+def log_prediction(prediction: float, mode: str, horizon: int | None = None) -> None:
     LOGS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    row = pd.DataFrame(
+        [
+            {
+                "timestamp": pd.Timestamp.now(),
+                "mode": mode,
+                "horizon": horizon,
+                "prediction_MW": prediction,
+            }
+        ]
+    )
 
-    row = pd.DataFrame([{
-        "timestamp": pd.Timestamp.now(),
-        "mode": mode,
-        "horizon": horizon,
-        "prediction_MW": prediction
-    }])
+    if LOGS_PATH.exists():
+        row.to_csv(LOGS_PATH, mode="a", header=False, index=False)
+    else:
+        row.to_csv(LOGS_PATH, index=False)
 
-    try:
-        if LOGS_PATH.exists():
-            row.to_csv(LOGS_PATH, mode="a", header=False, index=False)
-        else:
-            row.to_csv(LOGS_PATH, index=False)
-    except Exception:
-        pass
-        
-        
+
 def get_latest_feature_defaults(df: pd.DataFrame | None) -> dict:
     if df is None or df.empty:
         return {
@@ -622,7 +622,16 @@ with tab4:
     st.subheader("Prediction Logs and Monitoring")
 
     if LOGS_PATH.exists():
-        logs_df = pd.read_csv(LOGS_PATH, parse_dates=["timestamp"])
+        #logs_df = pd.read_csv(LOGS_PATH, parse_dates=["timestamp"])
+        
+        try:
+            logs_df = pd.read_csv(
+                 LOGS_PATH,
+                parse_dates=["timestamp"],
+               on_bad_lines="skip"   # 🔥 critical fix
+             )
+         except Exception:
+              logs_df = pd.DataFrame()
 
         st.markdown("### Recent Logged Predictions")
         st.dataframe(logs_df.tail(25))

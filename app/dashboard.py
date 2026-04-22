@@ -12,8 +12,9 @@ st.set_page_config(page_title="Energy Demand Forecast Dashboard", layout="wide")
 @st.cache_resource
 def load_model():
     model = xgb.XGBRegressor()
-    model.load_model("models/xgboost_model.json")
+    model.load_model("models/xgboost_model.json")
     return model
+    
 
 
 @st.cache_data

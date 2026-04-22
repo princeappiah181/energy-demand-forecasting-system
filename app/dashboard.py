@@ -131,25 +131,25 @@ def compute_residual_std(pred_df: pd.DataFrame | None) -> float:
     return float(residuals.std(ddof=1))
 
 
-def log_prediction(prediction: float, mode: str, horizon: int | None = None) -> None:
+def log_prediction(prediction, mode="single", horizon=None):
     LOGS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    row = pd.DataFrame(
-        [
-            {
-                "timestamp": pd.Timestamp.now(),
-                "mode": mode,
-                "horizon": horizon,
-                "prediction_MW": prediction,
-            }
-        ]
-    )
 
-    if LOGS_PATH.exists():
-        row.to_csv(LOGS_PATH, mode="a", header=False, index=False)
-    else:
-        row.to_csv(LOGS_PATH, index=False)
+    row = pd.DataFrame([{
+        "timestamp": pd.Timestamp.now(),
+        "mode": mode,
+        "horizon": horizon,
+        "prediction_MW": prediction
+    }])
 
-
+    try:
+        if LOGS_PATH.exists():
+            row.to_csv(LOGS_PATH, mode="a", header=False, index=False)
+        else:
+            row.to_csv(LOGS_PATH, index=False)
+    except Exception:
+        pass
+        
+        
 def get_latest_feature_defaults(df: pd.DataFrame | None) -> dict:
     if df is None or df.empty:
         return {

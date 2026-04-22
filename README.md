@@ -179,6 +179,6 @@ CI/CD integration
 richer monitoring dashboards
 
 ### Author
-Prince Appiah
+Prince Appiah <br>
 Ph.D. in Data Science
 

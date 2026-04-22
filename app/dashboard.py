@@ -631,7 +631,7 @@ with tab4:
                on_bad_lines="skip"   # 🔥 critical fix
              )
          except Exception:
-              logs_df = pd.DataFrame()
+             logs_df = pd.DataFrame()
 
         st.markdown("### Recent Logged Predictions")
         st.dataframe(logs_df.tail(25))

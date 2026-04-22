@@ -1,14 +1,4 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.venv/
-venv/
-.env
-.DS_Store
-
-logs/
+data/
 artifacts/
+logs/
 models/
-
-.ipynb_checkpoints/

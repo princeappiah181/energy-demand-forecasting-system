@@ -60,7 +60,7 @@ Future Enhancements
 - CI/CD integration
 - Advanced deep learning models
 
-Author
-Prince Appiah
-Ph.D. in Data Science
+Author <br>
+Prince Appiah <br>
+Ph.D. in Data Science <br>
 

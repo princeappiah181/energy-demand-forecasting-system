@@ -622,7 +622,7 @@ with tab4:
     st.subheader("Prediction Logs and Monitoring")
 
     if LOGS_PATH.exists():
-       # logs_df = pd.read_csv(LOGS_PATH, parse_dates=["timestamp"], on_bad_lines="skip")
+        logs_df = pd.read_csv(LOGS_PATH, parse_dates=["timestamp"], on_bad_lines="skip")
         
         
 

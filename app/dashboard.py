@@ -622,12 +622,9 @@ with tab4:
     st.subheader("Prediction Logs and Monitoring")
 
     if LOGS_PATH.exists():
-       # logs_df = pd.read_csv(LOGS_PATH, parse_dates=["timestamp"])
+       # logs_df = pd.read_csv(LOGS_PATH, parse_dates=["timestamp"], on_bad_lines="skip")
         
-        try:
-        		 logs_df = pd.read_csv(LOGS_PATH, parse_dates=["timestamp"], on_bad_lines="skip")	
-	except Exception:
-		 logs_df = pd.DataFrame()
+        
 
         st.markdown("### Recent Logged Predictions")
         st.dataframe(logs_df.tail(25))

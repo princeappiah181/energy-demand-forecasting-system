@@ -55,7 +55,7 @@ Tracks recent model outputs to simulate real-world monitoring.
 
 ## Project Structure
 
-```bash
+
 energy-demand-forecasting-system/
 │
 ├── app/
